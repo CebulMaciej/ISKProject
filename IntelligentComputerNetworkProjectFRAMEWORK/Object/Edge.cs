@@ -14,11 +14,9 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Object
             SourceVertex = sourceVertex;
             TargetVertex = targetVertex;
         }
-
         public int Id { get; }
         public int SourceVertex { get; }
         public int TargetVertex { get; }
-
         public string PrintEdgeInOriginalForm => $"\r\n<{Id}><{SourceVertex}><{TargetVertex}>";
     }
 }

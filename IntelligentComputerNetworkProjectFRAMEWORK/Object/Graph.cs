@@ -13,16 +13,9 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Object
             QuantityOfEdges = quantityOfEdges;
             Edges = edges;
         }
-
         public int QuantityOfEdges { get; }
         public IList<Edge> Edges { get; }
-
-
-        public string PrintGraphInOriginalForm()
-        {
-            string originalForm = $"<{QuantityOfEdges}>";
-            originalForm = Edges.Aggregate(originalForm, (current, edge) => $"{current}{edge.PrintEdgeInOriginalForm}");
-            return originalForm;
-        }
+        public string PrintGraphInOriginalForm() => Edges.Aggregate($"<{QuantityOfEdges}>", (current, edge) => $"{current}{edge.PrintEdgeInOriginalForm}");
+        
     }
 }
