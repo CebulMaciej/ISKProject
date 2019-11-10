@@ -39,7 +39,7 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.GeneticObjects
 
                 if (hasAnyNeighborSameColor)
                 {
-                    return int.MinValue;
+                    return -(countOfBadColoring + graph.Vertexes.Count+1);
                 }
 
                 return -(chromosomeValues.ToList().Distinct().Count());
