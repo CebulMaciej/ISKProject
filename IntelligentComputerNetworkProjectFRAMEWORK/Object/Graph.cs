@@ -12,10 +12,19 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Object
         {
             QuantityOfEdges = quantityOfEdges;
             Edges = edges;
+            Vertexes = edges.Select(x => x.SourceVertex).Union(edges.Select(y => y.TargetVertex)).Distinct().ToList();
         }
         public int QuantityOfEdges { get; }
         public IList<Edge> Edges { get; }
-        public string PrintGraphInOriginalForm() => Edges.Aggregate($"<{QuantityOfEdges}>", (current, edge) => $"{current}{edge.PrintEdgeInOriginalForm}");
+        public IList<int> Vertexes { get; }
+
+        public IList<int> NeighborsList(int vertex)
+        {
+            IEnumerable<int> vertexFromStarting= Edges.Where(x => x.SourceVertex == vertex).Select(x => x.TargetVertex);
+            IEnumerable<int> vertexFromEnding= Edges.Where(x => x.TargetVertex == vertex).Select(x => x.SourceVertex);
+            return vertexFromEnding.Union(vertexFromStarting).Distinct().ToList();
+        }
+        public virtual string PrintGraphInOriginalForm() => Edges.Aggregate($"<{QuantityOfEdges}>", (current, edge) => $"{current}{edge.PrintEdgeInOriginalForm}");
         
     }
 }
