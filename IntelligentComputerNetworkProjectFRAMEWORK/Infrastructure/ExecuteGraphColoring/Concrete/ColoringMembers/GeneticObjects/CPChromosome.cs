@@ -3,7 +3,7 @@ using GeneticSharp.Domain.Chromosomes;
 
 namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraphColoring.Concrete.ColoringMembers.GeneticObjects
 {
-    public class CPChromosome : ChromosomeBase, IChromosome
+    public class CPChromosome : ChromosomeBase
     {
         private readonly int[] m_geneValues;
         private readonly int m_length;
