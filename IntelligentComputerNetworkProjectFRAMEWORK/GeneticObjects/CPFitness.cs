@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GeneticSharp.Domain.Chromosomes;
 using GeneticSharp.Domain.Fitnesses;
 using IntelligentComputerNetworkProjectFRAMEWORK.Object;
@@ -17,11 +15,11 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.GeneticObjects
             try
             {
                 CPChromosome localChromosome = chromosome as CPChromosome;
+                if(localChromosome == null) throw new InvalidProgramException("Chromosome cannot be null");
                 int[] chromosomeValues = localChromosome.GetValues();
-                int vertexCount = chromosomeValues.Length;
-
+#if DEBUG
                 string p = $"{chromosomeValues[0]} , {chromosomeValues[1]} , {chromosomeValues[2]} , {chromosomeValues[3]}";
-
+#endif
                 Graph graph = GraphProvider.Graph;
 
                 bool hasAnyNeighborSameColor = false;
@@ -29,10 +27,9 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.GeneticObjects
                 foreach (int vertex in graph.Vertexes)
                 {
                     IList<int> sameVertexGroup = graph.NeighborsList(vertex).ToList();
-                    int firstVertex = sameVertexGroup.FirstOrDefault();
-                    int firstVertexColor = chromosomeValues[vertex-1];
+                    int firstVertexColor = chromosomeValues[vertex - 1];
                     hasAnyNeighborSameColor = hasAnyNeighborSameColor ||
-                                              sameVertexGroup.Any(x => chromosomeValues[x-1] == firstVertexColor);
+                                              sameVertexGroup.Any(x => chromosomeValues[x - 1] == firstVertexColor);
                     countOfBadColoring += (double)(sameVertexGroup.Count(x => chromosomeValues[x - 1] == firstVertexColor)-1) /
                                           sameVertexGroup.Count;
                 }
@@ -47,7 +44,7 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.GeneticObjects
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return 0;
+                return int.MinValue;
             }
         }
     }
