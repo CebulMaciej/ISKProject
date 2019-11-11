@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace IntelligentComputerNetworkProjectFRAMEWORK.FileReading
+namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.FileReading
 {
     public class FileReader
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using GeneticSharp.Domain.Chromosomes;
 using GeneticSharp.Domain.Fitnesses;
+using IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.StaticProvider;
 using IntelligentComputerNetworkProjectFRAMEWORK.Object;
-using IntelligentComputerNetworkProjectFRAMEWORK.StaticProvider;
 
-namespace IntelligentComputerNetworkProjectFRAMEWORK.GeneticObjects
+namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraphColoring.Concrete.ColoringMembers.GeneticObjects
 {
     public class CPFitness : IFitness
     {

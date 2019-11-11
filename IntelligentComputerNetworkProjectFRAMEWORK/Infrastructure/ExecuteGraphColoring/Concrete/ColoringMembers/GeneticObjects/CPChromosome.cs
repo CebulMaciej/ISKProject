@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GeneticSharp.Domain.Chromosomes;
-using GeneticSharp.Domain.Populations;
-using Microsoft.Win32;
 
-namespace IntelligentComputerNetworkProjectFRAMEWORK.GeneticObjects
+namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraphColoring.Concrete.ColoringMembers.GeneticObjects
 {
     public class CPChromosome : ChromosomeBase, IChromosome
     {
@@ -17,18 +11,6 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.GeneticObjects
 
         private int[] RandomizeGenes(int[] geneValues)
         {
-            //Random rnd = new Random();
-            //int amount = geneValues.Length;
-            //List<int> vertexList = geneValues.ToList();
-            //vertexList.Sort();
-            //for (var i = 0; i < amount; i++)
-            //{
-            //    int vertexIndex = rnd.Next(0, vertexList.Count);
-            //    geneValues[i] = vertexList[vertexIndex];
-            //    vertexList.RemoveAt(vertexIndex);
-            //}
-            //return geneValues;
-
             Random rnd = new Random();
             for (int i = 0; i<geneValues.Length;i++)
             {

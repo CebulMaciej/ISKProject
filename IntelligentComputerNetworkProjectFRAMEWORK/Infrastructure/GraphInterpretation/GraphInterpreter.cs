@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using IntelligentComputerNetworkProjectFRAMEWORK.FileReading;
+using IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.FileReading;
 using IntelligentComputerNetworkProjectFRAMEWORK.Object;
 
-namespace IntelligentComputerNetworkProjectFRAMEWORK.GraphInterpretation
+namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.GraphInterpretation
 {
     public class GraphInterpreter
     {
