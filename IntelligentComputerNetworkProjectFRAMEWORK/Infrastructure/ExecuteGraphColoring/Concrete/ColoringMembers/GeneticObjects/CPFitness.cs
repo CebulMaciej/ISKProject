@@ -26,12 +26,12 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraph
                 double countOfBadColoring = 0;
                 foreach (int vertex in graph.Vertexes)
                 {
-                    IList<int> sameVertexGroup = graph.NeighborsList(vertex).ToList();
-                    int firstVertexColor = chromosomeValues[vertex - 1];
+                    IList<int> neighbors = graph.NeighborsList(vertex).ToList();
+                    int colorOfCurrentVertex = chromosomeValues[vertex - 1];
                     hasAnyNeighborSameColor = hasAnyNeighborSameColor ||
-                                              sameVertexGroup.Any(x => chromosomeValues[x - 1] == firstVertexColor);
-                    countOfBadColoring += (double)(sameVertexGroup.Count(x => chromosomeValues[x - 1] == firstVertexColor)-1) /
-                                          sameVertexGroup.Count;
+                                              neighbors.Any(x => chromosomeValues[x - 1] == colorOfCurrentVertex);
+                    countOfBadColoring += (double)(neighbors.Count(x => chromosomeValues[x - 1] == colorOfCurrentVertex) -1) /
+                                          neighbors.Count;
                 }
 
                 if (hasAnyNeighborSameColor)
