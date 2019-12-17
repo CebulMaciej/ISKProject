@@ -8,18 +8,24 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.GraphInterpr
 {
     public class GraphInterpreter
     {
-        private readonly string _fileContent;
-        public GraphInterpreter(string filePath)
+        public Graph GetGraphFromFile(string graphFileName)
         {
-            FileReader fileReader = new FileReader(filePath);
-            _fileContent = fileReader.FileContent;
+            GraphFileReader graphFileReader = new GraphFileReader();
+            string graphFileContent = graphFileReader.GetGraphFileContent(graphFileName);
+            return ReadGraphFromFileContent(graphFileContent);
         }
 
-        public Graph GetGraph => ReadGraphFromFileContent();
-
-        private Graph ReadGraphFromFileContent()
+        public Graph GetDefaultGraph()
         {
-            IList<string> fileLines = _fileContent.Split(_fileSeparators,StringSplitOptions.RemoveEmptyEntries);
+            GraphFileReader graphFileReader = new GraphFileReader();
+            string graphFileContent = graphFileReader.GetDefaultGraphFileContent();
+            return ReadGraphFromFileContent(graphFileContent);
+        }
+
+
+        private Graph ReadGraphFromFileContent(string graphFileContent)
+        {
+            IList<string> fileLines = graphFileContent.Split(_fileSeparators, StringSplitOptions.RemoveEmptyEntries);
 
             int quantityOfEdges = ExtractEdgesQuantity(fileLines);
 
@@ -30,7 +36,7 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.GraphInterpr
 
                 edges.Add(CreateEdgeFromElementsList(edgeElements));
             }
-            return new Graph(quantityOfEdges,edges);
+            return new Graph(quantityOfEdges, edges);
         }
 
         private static Edge CreateEdgeFromElementsList(IList<string> lineElement)
@@ -40,7 +46,7 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.GraphInterpr
 
         private List<string> ExtractEdgeElement(IList<string> fileLines, int i)
         {
-            return RemoveLastElement(fileLines[i].Split(_lineSeparator).ToList()).Select(x=> x.Substring(1)).ToList();
+            return RemoveLastElement(fileLines[i].Split(_lineSeparator).ToList()).Select(x => x.Substring(1)).ToList();
         }
 
         private int ExtractEdgesQuantity(IList<string> fileLines)
@@ -50,7 +56,7 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.GraphInterpr
 
         private static IEnumerable<string> RemoveLastElement(IList<string> list)
         {
-            list.RemoveAt(list.Count-1);
+            list.RemoveAt(list.Count - 1);
             return list;
         }
 

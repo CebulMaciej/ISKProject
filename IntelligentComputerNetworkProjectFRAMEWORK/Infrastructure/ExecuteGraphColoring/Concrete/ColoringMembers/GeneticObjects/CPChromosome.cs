@@ -5,8 +5,8 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraph
 {
     public class CPChromosome : ChromosomeBase
     {
-        private readonly int[] m_geneValues;
-        private readonly int m_length;
+        private readonly int[] _geneValues;
+        private readonly int _length;
         private int m_population;
 
         private int[] RandomizeGenes(int[] geneValues)
@@ -22,15 +22,15 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraph
 
         public CPChromosome(int length, int[] geneValues, int population = 0) : base(length)
         {
-            m_length = length;
-            m_geneValues = geneValues;
+            _length = length;
+            _geneValues = geneValues;
             m_population = population;
             CreateGenes();
         }
 
         public override Gene GenerateGene(int geneIndex)
         {
-            return new Gene(m_geneValues[geneIndex]);
+            return new Gene(_geneValues[geneIndex]);
         }
 
         public override IChromosome CreateNew()
@@ -38,19 +38,19 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraph
             int[] geneValues;
             if (m_population > 0)
             {
-                geneValues = (int[])RandomizeGenes(m_geneValues).Clone();
+                geneValues = (int[])RandomizeGenes(_geneValues).Clone();
                 m_population--;
             }
             else
             {
-                geneValues = (int[])m_geneValues.Clone();
+                geneValues = (int[])_geneValues.Clone();
             }
-            return new CPChromosome(m_length, geneValues, m_population);
+            return new CPChromosome(_length, geneValues, m_population);
         }
 
         public int[] GetValues()
         {
-            return m_geneValues;
+            return _geneValues;
         }
     }
 }

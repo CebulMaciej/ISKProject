@@ -16,22 +16,22 @@ using IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraphColo
 using IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraphColoring.Response.Concrete;
 using IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.StaticProvider;
 using IntelligentComputerNetworkProjectFRAMEWORK.Object;
+using IntelligentComputerNetworkProjectFRAMEWORK.Object.Const;
 
 namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraphColoring.Concrete
 {
     public class GraphColoringExecutor : IGraphColoringExecutor
     {
-        public IGraphColoringResponse ColorGraph(IGraphColoringRequest graphColoringRequest)
+        public IGraphColoringResponse ColorGraph(ColorGraphParameters parameters)
         {
             try
             {
-                Graph graph = graphColoringRequest.Graph;
-                GraphProvider.SetGraph(graph);
+                Graph graph = GraphProvider.Graph;
 
                 Console.WriteLine(graph.PrintGraphInOriginalForm());
                 
-                CPChromosome chromosome = new CPChromosome(graphColoringRequest.StartValues.Length, graphColoringRequest.StartValues, graphColoringRequest.Population);
-                Population population = new Population(graphColoringRequest.PopulationSize, graphColoringRequest.PopulationSize, chromosome);
+                CPChromosome chromosome = new CPChromosome(graph.Vertexes.Count, graph.Vertexes.ToArray(), parameters.MaxNumberOfGenerations);
+                Population population = new Population(parameters.MinPopulationSize, parameters.MaxPopulationSize, chromosome);
                 CPFitness fitness = new CPFitness();
                 EliteSelection selection = new EliteSelection();
                 OnePointCrossover crossover = new OnePointCrossover();
@@ -77,6 +77,22 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraph
                 Console.WriteLine(ex);
                 return new GraphColoringResponse();
             }
+        }
+
+        private ISelection GetSelectionMethod(SelectionType selectionType)
+        {
+            switch (selectionType)
+            {
+                case SelectionType.Elite:
+                    return new EliteSelection();
+
+                case SelectionType.RouletteWheel:
+                    return new RouletteWheelSelection();
+
+                case SelectionType.Tournament:
+                    return new TournamentSelection();
+            }
+            throw new KeyNotFoundException();
         }
     }
 }

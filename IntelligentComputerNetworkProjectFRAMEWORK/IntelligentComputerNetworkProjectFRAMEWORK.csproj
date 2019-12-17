@@ -64,7 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\FileReading\FileReader.cs" />
+    <Compile Include="Infrastructure\FileReading\GraphFileReader.cs" />
     <Compile Include="Infrastructure\ExecuteGraphColoring\Concrete\ColoringMembers\GeneticObjects\CPChromosome.cs" />
     <Compile Include="Infrastructure\ExecuteGraphColoring\Concrete\ColoringMembers\GeneticObjects\CPCrossover.cs" />
     <Compile Include="Infrastructure\ExecuteGraphColoring\Concrete\ColoringMembers\GeneticObjects\CPFitness.cs" />
@@ -76,12 +76,17 @@
     <Compile Include="Infrastructure\ExecuteGraphColoring\Request\Concrete\GraphColoringRequest.cs" />
     <Compile Include="Infrastructure\ExecuteGraphColoring\Response\Abstract\IGraphColoringResponse.cs" />
     <Compile Include="Infrastructure\ExecuteGraphColoring\Response\Concrete\GraphColoringResponse.cs" />
+    <Compile Include="Infrastructure\StaticConfiguration\Configuration.cs" />
+    <Compile Include="Object\Const\CrossoverType.cs" />
+    <Compile Include="Object\Const\SelectionType.cs" />
     <Compile Include="Object\Edge.cs" />
+    <Compile Include="Object\ColorGraphParameters.cs" />
     <Compile Include="Object\Graph.cs" />
     <Compile Include="Object\GraphWithColoredVertexes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\StaticProvider\GraphProvider.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
