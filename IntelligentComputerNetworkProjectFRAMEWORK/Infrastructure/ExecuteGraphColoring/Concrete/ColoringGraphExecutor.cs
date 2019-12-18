@@ -37,7 +37,7 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraph
                 }
 
                 Population population = new Population(parameters.MinPopulationSize, parameters.MaxPopulationSize, chromosome);
-                CPFitness fitness = new CPFitness();
+                GCPFitness fitness = new GCPFitness();
                 EliteSelection selection = new EliteSelection();
                 OnePointCrossover crossover = new OnePointCrossover();
                 //CPMutation mutation = new CPMutation();

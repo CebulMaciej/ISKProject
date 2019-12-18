@@ -13,12 +13,13 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK
     {
         public void Run()
         {
+            IColoringGraphExecutor coloringGraphExecutor = new ColoringGraphExecutor();
             IGraphColoringExecutor coloringExecutor = new GraphColoringExecutor();
 
             InitGraph();
             ColorGraphParameters colorGraphParameters = GetColorGraphParameters();
 
-            IGraphColoringResponse response = coloringExecutor.ColorGraph(colorGraphParameters);
+            IGraphColoringResponse response = coloringGraphExecutor.ColorGraph(colorGraphParameters);
             ShowResult(response);
         }
 
@@ -34,7 +35,7 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK
             Console.Write("Max number of generations: ");
             int maxNumberOfGenerations = int.Parse(Console.ReadLine());
 
-            return new ColorGraphParameters(minPopulationSize, maxPopulationSize, SelectionType.Elite, CrossoverType.OnePoint, 0.75f, 0.1f,
+            return new ColorGraphParameters(minPopulationSize, maxPopulationSize, SelectionType.Elite, CrossoverType.OnePoint, 0.75f, 1.0f,
                 TimeSpan.FromMinutes(5), maxNumberOfGenerations, 50, -2);
         }
 
