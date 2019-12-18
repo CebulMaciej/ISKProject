@@ -6,11 +6,11 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Object
 {
     public class GraphWithColoredVertexes : Graph
     {
-        public GraphWithColoredVertexes(Graph graph,IDictionary<int,int> vertexesWithColor) : base(graph.QuantityOfEdges, graph.Edges)
+        public GraphWithColoredVertexes(Graph graph, IDictionary<int, int> vertexesWithColor) : base(graph.QuantityOfEdges, graph.Edges)
         {
             VertexesWithColor = vertexesWithColor;
         }
-        public IDictionary<int,int> VertexesWithColor { get; }
+        public IDictionary<int, int> VertexesWithColor { get; }
 
         public string PrintGraphColors()
         {

@@ -34,8 +34,8 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK
             Console.Write("Max number of generations: ");
             int maxNumberOfGenerations = int.Parse(Console.ReadLine());
 
-            return new ColorGraphParameters(minPopulationSize, maxPopulationSize, maxNumberOfGenerations,
-                SelectionType.Elite, CrossoverType.OnePoint, TimeSpan.FromMinutes(5));
+            return new ColorGraphParameters(minPopulationSize, maxPopulationSize, SelectionType.Elite, CrossoverType.OnePoint, 0.75f, 0.1f,
+                TimeSpan.FromMinutes(5), maxNumberOfGenerations, 50, -2);
         }
 
         private void InitGraph()
@@ -43,7 +43,8 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK
             GraphInterpreter graphInterpreter = new GraphInterpreter();
             Graph graph = graphInterpreter.GetDefaultGraph();
             GraphProvider.SetGraph(graph);
-            Console.WriteLine("Graph form:" + graph.PrintGraphInOriginalForm());
+            Console.WriteLine("Graph form: ");
+            Console.WriteLine(graph.PrintGraphInOriginalForm());
         }
 
 
