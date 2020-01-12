@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace IntelligentComputerNetworkProjectFRAMEWORK.Object
@@ -15,9 +14,11 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Object
         public string PrintGraphColors()
         {
             StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine("--Colored graph--");
             foreach (KeyValuePair<int, int> item in VertexesWithColor)
             {
-                stringBuilder.AppendLine($"Vertex :{item.Key} - Color : {item.Value}");
+                stringBuilder.AppendLine($"Vertex: {item.Key} -> Color: {item.Value}");
             }
             return stringBuilder.ToString();
         }

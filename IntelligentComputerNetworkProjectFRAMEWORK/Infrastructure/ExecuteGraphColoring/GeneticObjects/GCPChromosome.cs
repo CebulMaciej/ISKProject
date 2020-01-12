@@ -21,8 +21,8 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraph
             _maxValue = maxValue;
             _geneValues = geneValues;
 
-            if (geneValues == null)
-            {
+            //if (geneValues == null)
+            //{
                 geneValues = new int[length];
                 var rnd = RandomizationProvider.Current;
 
@@ -31,7 +31,7 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Infrastructure.ExecuteGraph
                     geneValues[i] = rnd.GetInt(minValue, maxValue);
                 }
                 _geneValues = geneValues;
-            }
+            //}
             CreateGenes();
         }
 

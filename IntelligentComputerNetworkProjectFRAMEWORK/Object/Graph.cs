@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IntelligentComputerNetworkProjectFRAMEWORK.Object
 {
@@ -12,7 +9,7 @@ namespace IntelligentComputerNetworkProjectFRAMEWORK.Object
         {
             QuantityOfEdges = quantityOfEdges;
             Edges = edges;
-            Vertexes = edges.Select(x => x.SourceVertex).Union(edges.Select(y => y.TargetVertex)).Distinct().ToList();
+            Vertexes = edges.Select(x => x.SourceVertex).Union(edges.Select(y => y.TargetVertex)).Distinct().OrderBy(p=>p).ToList();
         }
         public int QuantityOfEdges { get; }
         public IList<Edge> Edges { get; }
